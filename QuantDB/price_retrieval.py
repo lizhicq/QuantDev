@@ -7,8 +7,8 @@ from __future__ import print_function
 
 import datetime
 import warnings
+import fix_yahoo_finance as yf
 import time
-
 import MySQLdb as mdb
 import requests
 
@@ -33,8 +33,9 @@ def obtain_list_of_db_tickers():
 
 
 def get_daily_historic_data_yahoo(
-        ticker, start_date=(2000,1,1),
-        end_date=datetime.date.today().timetuple()[0:3]
+        ticker,
+        start_date="2000-01-01",
+        end_date="2018-08-08"
     ):
     """
     Obtains data from Yahoo Finance returns and a list of tuples.
@@ -43,40 +44,20 @@ def get_daily_historic_data_yahoo(
     start_date: Start date in (YYYY, M, D) format
     end_date: End date in (YYYY, M, D) format
     """
-    # Construct the Yahoo URL with the correct integer query parameters
-    # for start and end dates. Note that some parameters are zero-based!
-    ticker_tup = (
-        ticker, start_date[1]-1, start_date[2],
-        start_date[0], end_date[1]-1, end_date[2],
-        end_date[0]
-    )
-    tuple1 = (start_date[0], start_date[1], start_date[2], 0,0,0,0,0,0)
-    tuple2 = (end_date[0], end_date[1], end_date[2], 0,0,0,0,0,0)
-    tuple1 = str(int(time.mktime(tuple1)))
-    tuple2 = str(int(time.mktime(tuple2)))
-    yahoo_url = "https://finance.yahoo.com/quote/ticker/history?period1=tuple1&period2=tuple2&interval=1d&filter=history&frequency=1d"
-    yahoo_url = yahoo_url.replace('ticker', ticker)
-    yahoo_url = yahoo_url.replace('tuple1', tuple1)
-    yahoo_url = yahoo_url.replace('tuple2', tuple2)
-    print (yahoo_url)
 
-    # yahoo_url += "?s=%s&a=%s&b=%s&c=%s&d=%s&e=%s&f=%s"
-    # yahoo_url = yahoo_url % ticker_tup
-
-    # Try connecting to Yahoo Finance and obtaining the data
-    # On failure, print an error message.
     try:
-        yf_data = requests.get(yahoo_url).text.split("\n")[1:-1]
+        yf_data = yf.download(ticker, start_date, end_date)
         prices = []
-        for y in yf_data:
-            p = y.strip().split(',')
+        for index, p in yf_data.iterrows():
             prices.append(
-                (datetime.datetime.strptime(p[0], '%Y-%m-%d'),
-                p[1], p[2], p[3], p[4], p[5], p[6])
+                (index.strftime("%Y-%m-%d"),
+                p.Open, p.High, p.Low, p.Close, p["Adj Close"], p.Volume) # [u'Open', u'High', u'Low', u'Close', u'Adj Close', u'Volume']
             )
+        return prices
     except Exception as e:
         print("Could not download Yahoo data: %s" % e)
-    return prices
+        return []
+
 
 
 def insert_daily_data_into_db(
@@ -95,7 +76,7 @@ def insert_daily_data_into_db(
     # Amend the data to include the vendor ID and symbol ID
     daily_data = [
         (data_vendor_id, symbol_id, d[0], now, now,
-        d[1], d[2], d[3], d[4], d[5], d[6])
+        d[1], d[2], d[3], d[4], d[5], d[6]) # Open, High, Low, Close, AdjClose, Volume
         for d in daily_data
     ]
 
@@ -123,7 +104,30 @@ if __name__ == "__main__":
     tickers = obtain_list_of_db_tickers()
     lentickers = len(tickers)
     for i, t in enumerate(tickers):
+        if i+1 not in range(150, 200) and i+1 not in range(250,300):
+            continue
         yf_data = get_daily_historic_data_yahoo(t[1])
         insert_daily_data_into_db('1', t[0], yf_data)
-        print("Adding data for %s: %s out of %s" % (t[1], i+1, lentickers), yf_data)
+        print("Adding data for %s: %s out of %s" % (t[1], i+1, lentickers))
+        if (i+1) % 50 == 0:
+            print('wait 300s for forbidden')
+            time.sleep(300)
+    print("Successfully added Yahoo Finance pricing data to DB.")
+
+
+
+if __name__ == "__main__1":
+    # This ignores the warnings regarding Data Truncation
+    # from the Yahoo precision to Decimal(19,4) datatypes
+    warnings.filterwarnings('ignore')
+
+    # Loop over the tickers and insert the daily historical
+    # data into the database
+    tickers = obtain_list_of_db_tickers()
+    lentickers = len(tickers)
+    i = 85
+    t = tickers[i]
+    yf_data = get_daily_historic_data_yahoo(t[1])
+    insert_daily_data_into_db('1', t[0], yf_data)
+    print("Adding data for %s: %s out of %s" % (t[1], i+1, lentickers))
     print("Successfully added Yahoo Finance pricing data to DB.")
