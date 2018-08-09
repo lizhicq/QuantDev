@@ -83,7 +83,7 @@ def insert_daily_data_into_db(
     # Create the insert strings
     column_str = """data_vendor_id, symbol_id, price_date, created_date, 
                  last_updated_date, open_price, high_price, low_price, 
-                 close_price, volume, adj_close_price"""
+                 close_price, adj_close_price, volume"""
     insert_str = ("%s, " * 11)[:-2]
     final_str = "INSERT INTO daily_price (%s) VALUES (%s)" % \
         (column_str, insert_str)
@@ -104,19 +104,19 @@ if __name__ == "__main__":
     tickers = obtain_list_of_db_tickers()
     lentickers = len(tickers)
     for i, t in enumerate(tickers):
-        if i+1 not in range(150, 200) and i+1 not in range(250,300):
-            continue
+        # if i+1 not in range(150, 200) and i+1 not in range(250,300):
+        #     continue
         yf_data = get_daily_historic_data_yahoo(t[1])
         insert_daily_data_into_db('1', t[0], yf_data)
         print("Adding data for %s: %s out of %s" % (t[1], i+1, lentickers))
         if (i+1) % 50 == 0:
             print('wait 300s for forbidden')
-            time.sleep(300)
+            time.sleep(360)
     print("Successfully added Yahoo Finance pricing data to DB.")
 
 
 
-if __name__ == "__main__1":
+if __name__ == "__main__2":
     # This ignores the warnings regarding Data Truncation
     # from the Yahoo precision to Decimal(19,4) datatypes
     warnings.filterwarnings('ignore')
@@ -125,8 +125,8 @@ if __name__ == "__main__1":
     # data into the database
     tickers = obtain_list_of_db_tickers()
     lentickers = len(tickers)
-    i = 85
-    t = tickers[i]
+    i = 27
+    t = tickers[i] # GOOG
     yf_data = get_daily_historic_data_yahoo(t[1])
     insert_daily_data_into_db('1', t[0], yf_data)
     print("Adding data for %s: %s out of %s" % (t[1], i+1, lentickers))

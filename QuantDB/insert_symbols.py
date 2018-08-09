@@ -79,7 +79,15 @@ def insert_snp500_symbols(symbols):
         cur.executemany(final_str, symbols)
 
 
-if __name__ == "__main__":
+if __name__ == "__main__1":
     symbols = obtain_parse_wiki_snp500()
-    #insert_snp500_symbols(symbols)
+    insert_snp500_symbols(symbols)
+    print("%s symbols were successfully added." % len(symbols))
+
+
+if __name__ == "__main__": # add for a single symbol
+    symbols = []
+    now = datetime.datetime.utcnow()
+    symbols.append((u'TSLA', 'stock', u'Tesla Inc.', u'Consumer Discretionary', 'USD', now, now))
+    insert_snp500_symbols(symbols)
     print("%s symbols were successfully added." % len(symbols))
