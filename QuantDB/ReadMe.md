@@ -27,8 +27,6 @@ password
 use securities_master
 select count(*) from daily_price 
 
-
-
 SELECT *
 FROM symbol AS sym
 INNER JOIN daily_price AS dp
@@ -36,8 +34,6 @@ ON dp.symbol_id = sym.id
 WHERE sym.ticker = 'TSLA'
 ORDER BY dp.price_date ASC
 limit 10;
-
-
 
 select count(*) from daily_price 
 
@@ -66,3 +62,8 @@ ON dp.symbol_id = sym.id
 WHERE sym.ticker = 'GOOG'
 ORDER BY dp.price_date ASC;
 ``` 
+4. get symbols
+```
+select distinct(ticker), name from symbol
+
+```
