@@ -49,7 +49,7 @@ SELECT count(*)
 FROM symbol AS sym
 INNER JOIN daily_price AS dp
 ON dp.symbol_id = sym.id
-WHERE sym.ticker = 'SNY'
+WHERE sym.ticker = 'NVDA'
 ORDER BY dp.price_date ASC
 limit 10;
 
@@ -59,5 +59,10 @@ INNER JOIN symbol as sym
 ON dp.symbol_id = sym.id
 where sym.ticker in ('NOC', 'O', 'C');
 
-
+SELECT dp.price_date, dp.oepn_price, dp.close_price
+FROM symbol AS sym
+INNER JOIN daily_price AS dp
+ON dp.symbol_id = sym.id
+WHERE sym.ticker = 'GOOG'
+ORDER BY dp.price_date ASC;
 ``` 
