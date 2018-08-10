@@ -37,4 +37,27 @@ WHERE sym.ticker = 'TSLA'
 ORDER BY dp.price_date ASC
 limit 10;
 
+
+
+select count(*) from daily_price 
+
+select * from symbol where ticker="DELL" limit 10;
+
+select distinct(sector) from symbol;
+
+SELECT count(*)
+FROM symbol AS sym
+INNER JOIN daily_price AS dp
+ON dp.symbol_id = sym.id
+WHERE sym.ticker = 'SNY'
+ORDER BY dp.price_date ASC
+limit 10;
+
+delete from dp
+FROM daily_price as dp
+INNER JOIN symbol as sym
+ON dp.symbol_id = sym.id
+where sym.ticker in ('NOC', 'O', 'C');
+
+
 ``` 
