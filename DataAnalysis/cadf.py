@@ -59,8 +59,8 @@ if __name__ == "__main__":
     wll = get_symbol("WLL",  start.strftime("%Y-%m-%d"), end.strftime("%Y-%m-%d"))
 
     df = pd.DataFrame(index=arex.index)
-    df["AREX"] = arex["Adj Close"]
-    df["WLL"] = wll["Adj Close"]
+    df["AREX"] = arex["adj_Close"]
+    df["WLL"] = wll["adj_Close"]
 
     # Plot the two time series
     plot_price_series(df, "AREX", "WLL")
