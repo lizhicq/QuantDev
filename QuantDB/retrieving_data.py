@@ -39,7 +39,8 @@ def get_symbol(ticker, start_date, end_date):
     con = mdb.connect(db_host, db_user, db_pass, db_name)
 
     # Select all of the historic Google adjusted close data
-    sql = """SELECT dp.price_date, dp.open_price, dp.close_price
+    sql = """SELECT dp.price_date, dp.open_price, dp.high_price, 
+             dp.low_price, dp.close_price, dp.adj_close_price, dp.volume
              FROM symbol AS sym
              INNER JOIN daily_price AS dp
              ON dp.symbol_id = sym.id
@@ -58,3 +59,4 @@ def get_symbol(ticker, start_date, end_date):
 
 if __name__ == "__main__":
     print (get_daily_price('TSLA').tail())
+    print (get_symbol('TSLA', '2018-01-01', '2018-08-01').tail())
