@@ -66,4 +66,12 @@ ORDER BY dp.price_date ASC;
 ```
 select distinct(ticker), name from symbol
 
+SELECT *
+FROM symbol AS sym
+INNER JOIN daily_price AS dp
+ON dp.symbol_id = sym.id
+WHERE sym.ticker = 'GOOG'
+AND dp.price_date>="2013-01-01"
+AND dp.price_date<="2018-01-01"
+ORDER BY dp.price_date ASC;
 ```

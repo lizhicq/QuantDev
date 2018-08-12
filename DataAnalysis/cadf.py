@@ -3,11 +3,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 import pandas as pd
-import pandas.io.data as web
 import pprint
 import statsmodels.tsa.stattools as ts
-
-from pandas.stats.api import ols
+from QuantDB.retrieving_data import get_symbol
+#from pandas.stats.api import ols
 
 
 def plot_price_series(df, ts1, ts2):
@@ -53,11 +52,11 @@ def plot_residuals(df):
     plt.show()
 
 if __name__ == "__main__":
-    start = datetime.datetime(2012, 1, 1)
-    end = datetime.datetime(2013, 1, 1)
+    start = datetime.datetime(2013, 1, 1)
+    end = datetime.datetime(2018, 1, 1)
 
-    arex = web.DataReader("AREX", "yahoo", start, end)
-    wll = web.DataReader("WLL", "yahoo", start, end)
+    arex = get_symbol("AREX", start.strftime("%Y-%m-%d"), end.strftime("%Y-%m-%d"))
+    wll = get_symbol("WLL",  start.strftime("%Y-%m-%d"), end.strftime("%Y-%m-%d"))
 
     df = pd.DataFrame(index=arex.index)
     df["AREX"] = arex["Adj Close"]
