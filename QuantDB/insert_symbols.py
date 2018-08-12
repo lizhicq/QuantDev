@@ -94,6 +94,6 @@ if __name__ == "__main__": # add for a single symbol
     # symbols.append((u'DD', 'stock', u'DuPont de Nemours', u'Materials', 'USD', now, now))
     # symbols.append((u'SNE', 'stock', u'Sony', u'Consumer Discretionary', 'USD', now, now))
     # symbols.append((u'TWX', 'stock', u'Time Warner', u'Consumer Discretionary', 'USD', now, now))
-    symbols.append((u'AREX', 'stock', u'Airport Railroad Express', u'Utilities', 'USD', now, now))
+    symbols.append((u'WLL', 'stock', u'Whiting Petroleum Corporation', u'Energy', 'USD', now, now))
     insert_snp500_symbols(symbols)
     print("%s symbols were successfully added." % len(symbols))

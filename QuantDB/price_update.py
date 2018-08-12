@@ -123,7 +123,7 @@ if __name__ == "__main__": # add single stock to daily price
     tickers = obtain_list_of_db_tickers()
     lentickers = len(tickers)
     for i, t in enumerate(tickers):
-        if t[1] != 'AREX':
+        if t[1] != 'WLL':
             continue
         yf_data = get_daily_historic_data_yahoo(t[1])
         insert_daily_data_into_db('1', t[0], yf_data)

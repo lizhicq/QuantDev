@@ -45,7 +45,7 @@ SELECT count(*)
 FROM symbol AS sym
 INNER JOIN daily_price AS dp
 ON dp.symbol_id = sym.id
-WHERE sym.ticker = 'NVDA'
+WHERE sym.ticker = 'WLL'
 ORDER BY dp.price_date ASC
 limit 10;
 
