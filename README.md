@@ -16,8 +16,6 @@ This project requires **Python 2.7** and the following Python libraries installe
 
 
 ### Run
-In a terminal or command window, navigate to the top-level project directory `rl_trading/` (that contains this README) and run the following command:
-
 ```shell
 $ python -m market_sim.agent [-h] [-t] [-d] [-s] [-m] <OPTION>
 ```
