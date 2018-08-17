@@ -1,4 +1,4 @@
-# Building Quantitative Strategy for Personal Trading
+Building Quantitative Strategy for Personal Trading
 ==================
 
 Simplified Quantopian System, locally download data, building strategy, bask testing, paper trading
