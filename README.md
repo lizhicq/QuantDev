@@ -20,9 +20,6 @@ This project requires **Python 2.7** and the following Python libraries installe
 $ python -m market_sim.agent [-h] [-t] [-d] [-s] [-m] <OPTION>
 ```
 
-Where *OPTION* is the kind of agent to be run. The flag *[-t]* is the number of trials to perform using the same file, *[-d]* is the date of the file to use in the simulation, *[-m]* is the month of the *date* flag and *[-s]* is the number of sessions on each trial. Use the flag *[-h]* to get information about what kind of agent is currently available, as well as other flags to use. The simulation will generate log files to be analyzed later on. Be aware that any of those simulations options might take several minutes to complete.
-
-
 ### Data
 Data is extraded from yahoo finance, refer to QuantDB to checkout the datasource and local DB construction.
 
