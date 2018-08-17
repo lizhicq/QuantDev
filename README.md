@@ -12,6 +12,7 @@ This project requires **Python 2.7** and the following Python libraries installe
 - [Pandas](http://pandas.pydata.org)
 - [Seaborn](https://web.stanford.edu/~mwaskom/software/seaborn/)
 - [BeautifulSoup](https://pypi.python.org/pypi/beautifulsoup4)
+- [scikit-learn](https://pypi.org/project/scikit-learn/) 
 
 
 ### Run
