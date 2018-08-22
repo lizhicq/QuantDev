@@ -24,7 +24,7 @@ $ python -m market_sim.agent [-h] [-t] [-d] [-s] [-m] <OPTION>
 ### Data
 Data is extraded from yahoo finance, refer to QuantDB to checkout the datasource and local DB construction.
 
-
+ 
 ### Main References
 1. Gareth James • Daniela Witten • Trevor Hastie • Robert Tibshirani, An Introduction to
 Statistical Learning, 4th Edition.
