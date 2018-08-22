@@ -4,7 +4,7 @@
 import pandas as pd
 import pandas.io.data as web
 import matplotlib.pyplot as plt
-
+ 
 # Simple Moving Average 
 def SMA(data, ndays): 
  SMA = pd.Series(pd.rolling_mean(data['Close'], ndays), name = 'SMA') 
