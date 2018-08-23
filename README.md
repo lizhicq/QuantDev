@@ -3,7 +3,26 @@ Building Quantitative Strategy for Personal Trading
 
 Simplified Quantopian System, locally download data, building strategy, bask testing, paper trading
 
+### Data Source
+
+Data is imported from yahoo finance, I wrapped sp500 stocks from 2000-01-01 to 2018-08-08. You're free to add more stocks using the template.
+
+I used mysql to manage the stocks daily data and provide table to create/insert/update query for reference.
+It is easy to migrate the data with mysql. 
+
+Later, when I introduce the text analysis model, I may use mongo db to manager the text data I wrapped from the web.
+
+
+
+### Example,
+Here is an example, I use sklearn template to make this sample. Using the close price - open price as input, find their kernals and try to cluster those stocks with similiar change pattern.  
+
 ![alt text](https://lh3.googleusercontent.com/-6E-nUmRvrBI/W331bA8byHI/AAAAAAAA_dM/2JORMapWoyg76qIOqTJ3Ed9lW8wiJKoKwCL0BGAs/w530-d-h405-n-rw/download.png)
+
+
+
+
+
 ### Install
 This project requires **Python 2.7** and the following Python libraries installed:
 
