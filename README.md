@@ -35,13 +35,6 @@ This project requires **Python 2.7** and the following Python libraries installe
 - [scikit-learn](https://pypi.org/project/scikit-learn/) 
 
 
-### Run
-```shell
-$ python -m market_sim.agent [-h] [-t] [-d] [-s] [-m] <OPTION>
-```
-
-### Data
-Data is extraded from yahoo finance, refer to QuantDB to checkout the datasource and local DB construction.
 
  
 ### Main References
