@@ -5,7 +5,7 @@ Simplified Quantopian System, locally download data, building strategy, bask tes
 
 ### Data Source
 
-Data is imported from yahoo finance, I wrapped sp500 stocks from 2000-01-01 to 2018-08-08. You're free to add more stocks using the template.
+Data is imported from yahoo finance, I wrapped sp500 stocks from 2000-01-01 to 2018-08-08. You're free to add more stocks using the template. I personally add TSLA, YHOO, BABA.
 
 I used mysql to manage the stocks daily data and provide table to create/insert/update query for reference.
 It is easy to migrate the data with mysql. 
