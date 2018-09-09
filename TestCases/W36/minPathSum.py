@@ -16,3 +16,6 @@ class Solution:
                 else:
                     grid[i][j] = grid[i][j] + min(grid[i][j-1], grid[i-1][j])
         return grid[row-1][col-1]
+
+
+
