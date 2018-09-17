@@ -17,3 +17,7 @@ class Solution:
                         values[i] + values[i+1] + min(dp[i+3], dp[i+4]))
 
         return sum(values) - dp[0] < dp[0]
+
+
+
+
