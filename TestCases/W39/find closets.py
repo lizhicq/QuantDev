@@ -19,5 +19,24 @@ class Solution(object):
             left_dif = target - A[start] if start >= 0 else None
             right_dif = A[end] - target if end < len(A) else None
 
+            if left_dif and right_dif:
+                if right_dif < left_dif:
+                    ans.append(A[start])
+                    start -= 1
+                else:
+                    ans.append(A[end])
+                    end += 1
+
+            elif left_dif:
+                ans.append(A[start])
+                start -= 1
+            elif right_dif:
+                ans.append(A[end])
+                end += 1
+            else:
+                break
+
+        return ans if len(ans) == k else -1
+
 
 
