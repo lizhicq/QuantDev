@@ -41,4 +41,4 @@ Statistical Learning, 4th Edition.
 2. CHAN, N. T.; SHELTON, C. *An electronic market-maker*. 2001.
 
 ### License
-The contents of this repository are covered under the [Apache 2.0 License](LICENSE.md).
+The contents of this repository are covered under the [Apache 2.0 License](LICENSE.md).   
