@@ -19,7 +19,7 @@ Here is an example, I use sklearn template to make this sample. Using the close 
 
 ![alt text](https://lh3.googleusercontent.com/-6E-nUmRvrBI/W331bA8byHI/AAAAAAAA_dM/2JORMapWoyg76qIOqTJ3Ed9lW8wiJKoKwCL0BGAs/w530-d-h405-n-rw/download.png)
 
-
+ 
  
 ### Install
 This project requires **Python 2.7** and the following Python libraries installed:
