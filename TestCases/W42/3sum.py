@@ -14,8 +14,10 @@ class Solution(object):
 
         ans = []
         i = 1
+        print nums
         while i < len(nums) - 1:
             self.check(i-1, i+1, nums, ans, nums[i])
+            print ans
             i += 1
             while i < len(nums) and nums[i] == nums[i-1]:
                 i += 1
