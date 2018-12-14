@@ -3,6 +3,7 @@ Building Quantitative Strategy for Personal Trading
   
 Simplified Quantopian System, locally download data, building strategy, bask testing, paper trading
 
+
 ### Data Source
 
 Data is imported from yahoo finance, I wrapped sp500 stocks from 2000-01-01 to 2018-08-08. You're free to add more stocks using the template. I personally add TSLA, YHOO, BABA.
